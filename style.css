@@ -55,38 +55,32 @@
   max-height: 700px;
   overflow-y: auto;
 }
-
-.country-card {
+#countries .country-card {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px;
   text-align: center;
   background-color: #f9f9f9;
   transition: transform 0.3s;
+  transform: scale(1.03);
   width: 100%;
 }
-
-.country-card:hover {
-  transform: translateY(-5px);
-}
-
-.country-card img {
+#countries .country-card img {
   width: 100%;
-  height: 100px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  height: 130px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
-
-.country-card h3 {
+#countries .country-card h3 {
   margin: 10px 0;
   font-size: 1.2em;
 }
-
-.country-card p {
+#countries .country-card p {
   color: #666;
   margin: 5px 0;
+}
+#countries .country-card:hover {
+  transform: translateY(-5px);
 }
 
 #countries::-webkit-scrollbar {
