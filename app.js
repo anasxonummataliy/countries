@@ -39,10 +39,10 @@ function displayCountries(countries) {
         countryCard.innerHTML = `
             <img src="${country.flags.png}" alt="${country.name.common} flag">
             <h3>${country.name.common}</h3>
-            <p>Capital: ${country.capital ? country.capital[0] : 'N/A'}</p>
-            <p>Region: ${country.region}</p>
-            <p>Population: ${country.population.toLocaleString()}</p>
-             <p>Chinese language: ${country.translations.zho?.common || 'N/A'}</p>
+            <p>Poytaxti: ${country.capital ? country.capital[0] : 'N/A'}</p>
+            <p>Mintaqa: ${country.region}</p>
+            <p>Aholisi: ${country.population.toLocaleString()}</p>
+            <p>Xitoy tilida: ${country.translations.zho?.common || 'N/A'}</p>
 
         `;
 
