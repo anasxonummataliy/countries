@@ -1,7 +1,7 @@
 const searchInput = document.getElementById('searchInput');
 const countriesContainer = document.getElementById('countries');
 
-async function fetchAllCountries() {
+async function getAllcountries() {
     try {
         const response = await fetch('https://restcountries.com/v3.1/all');
         if (!response.ok) {
@@ -50,13 +50,13 @@ function displayCountries(countries) {
     });
 }
 
-window.addEventListener('load', fetchAllCountries);
+window.addEventListener('load', getAllcountries);
 
 searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.trim();
     if (searchTerm.length > 0) {
         searchCountries(searchTerm);
     } else {
-        fetchAllCountries();
+        getAllcountries();
     }
 });
