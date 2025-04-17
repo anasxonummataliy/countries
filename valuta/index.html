@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: 400px;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto;
+            border: 1px solid;
+            gap: 10px;
+        }
+
+        button {
+            width: 50%;
+            height: 50px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button>RUB</button>
+        <button>USD</button>
+        <button>EUR</button>
+        <p id="kurs"></p>
+        
+    </div>
+
+    <script>
+        const container = document.querySelector(".container");
+        const buttons = document.querySelectorAll("button");
+        const kursSpan = document.getElementById("kurs");
+
+        async function fetchCurrencyRate(currency) {
+            try {
+                const response = await fetch("https://cbu.uz/uz/arkhiv-kursov-valyut/json/");
+                if (!response.ok) {
+                    throw new Error("Ma'lumotlarni olishda xatolik");
+                }
+                const data = await response.json();
+                const currencyData = data.find(item => item.Ccy === currency);
+                if (!currencyData) {
+                    throw new Error("Valyuta topilmadi!");
+                }
+                return currencyData; 
+            } catch (error) {
+                container.innerHTML = `<p>${error.message}</p>`;
+                return null;
+            }
+        }
+
+        buttons.forEach(button => {
+            button.addEventListener("click", async () => {
+                const currency = button.textContent; 
+                const val = await fetchCurrencyRate(currency);
+                if (val) {
+                    kursSpan.textContent = `${button.textContent} : ${val.Rate} so'm`;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
